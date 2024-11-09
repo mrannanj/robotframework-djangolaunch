@@ -1,18 +1,15 @@
 ==============================================================================
-A robot framework library for Django.
+A Robot Framework library for starting and stopping Django.
 ==============================================================================
 
 
 Introduction
 ------------
 
-DjangoLibrary is a web testing library to test Django with Robot Framework.
-It uses SeleniumLibrary to run tests against a real browser instance.
+DjangoLaunch is a Robot Framework library for starting and stoppping Django.
 
-The library will automatically start and stop your Django instance while running the tests.
-It also comes with serveral autologin keywords that allow you to login different users during your tests, without the need to actually access the login page.
-
-DjangoLibrary is currently tested against Django 1.8.x, 1.9.x, 1.11.x with SQLite and Postgres on Python 2.7 and 3.6.
+It has been forked from
+https://github.com/kitconcept/robotframework-djangolibrary
 
 
 License
