@@ -39,7 +39,6 @@ setup(
         'factory_boy',
         'requests',
         'robotframework',
-        'robotframework-seleniumlibrary',
         'robotframework-debuglibrary',
         'six',
     ],

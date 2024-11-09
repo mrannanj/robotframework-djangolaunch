@@ -6,7 +6,6 @@ include/
 lib/
 man/
 pip-selfcheck.json
-selenium/
 .env/
 log.html
 mysite/db.sqlite3
@@ -16,4 +15,3 @@ mysite/db.sqlite3
 .py3*/
 output.xml
 report.html
-selenium-screenshot*
