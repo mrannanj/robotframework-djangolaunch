@@ -13,5 +13,8 @@ mysite/db.sqlite3
 .cache
 .py2*/
 .py3*/
-output.xml
-report.html
+/output.xml
+/report.html
+/robotframework
+/playwright-log.txt
+/browser
