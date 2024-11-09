@@ -34,15 +34,6 @@ def safe_utf8(string):
 class DjangoLaunch:
     """DjangoLaunch is a web testing library to test Django with Robot
     Framework.
-
-    It uses SeleniumLibrary to run tests against a real browser instance.
-
-    *Before running tests*
-
-    Prior to running test cases using DjangoLaunch, DjangoLaunch must be
-    imported (together with SeleniumLibrary) into your Robot test suite
-    (see `importing` section), and the SeleniumLibrary 'Open Browser' keyword
-    must be used to open a browser to the desired location.
     """
 
     django_pid = None
@@ -72,7 +63,6 @@ class DjangoLaunch:
         `db` is deprecated. Please don't use it.
 
         Examples:
-        | Library | SeleniumLibrary | timeout=15        | implicit_wait=0.5  | # Sets default timeout to 15 seconds and the default implicit_wait to 0.5 seconds. |  # noqa
         | Library | DjangoLaunch    | 127.0.0.1         | 55001              | path=mysite/mysite | manage=mysite/manage.py | settings=mysite.settings | db=mysite/db.sqlite3 | # Sets default hostname to 127.0.0.1 and the default port to 55001.                |  # noqa
         """
         self.host = host
@@ -239,41 +229,6 @@ user.save()""".format(
         # encode autologin cookie value as base64
         autologin_cookie_value = base64.b64encode(
             safe_bytes("%s:%s" % (username, password))
-        )
-
-        selenium2lib = BuiltIn().get_library_instance('SeleniumLibrary')
-        # XXX: The 'Add Cookie' keywords does not work with Firefox, therefore
-        # we have to add the cookie with js here. A bug has been filed:
-        # https://github.com/rtomac/robotframework-selenium2library/issues/273
-        # selenium2lib.add_cookie(
-        #     "autologin",
-        #     "%s:%s" % (username, password),
-        #     path="/",
-        #     domain="localhost",
-        # )
-
-        if six.PY3:
-            selenium2lib.execute_javascript(
-                "document.cookie = 'autologin=%s;path=/;domain=localhost;';" %
-                autologin_cookie_value.decode('utf-8')
-            )
-        else:
-            selenium2lib.execute_javascript(
-                "document.cookie = 'autologin=%s;path=/;domain=localhost;';" %
-                autologin_cookie_value
-            )
-
-        # autologin_cookie = selenium2lib.get_cookie_value('autologin')
-        # assert autologin_cookie == "%s:%s" % (username, password)
-        # cookies = selenium2lib.get_cookies()
-        # assert cookies == u"autologin=%s:%s" % (username, password)
-
-    def autologin_logout(self):
-        """Logout a user that has been logged in by the autologin_as keyword.
-        """
-        selenium2lib = BuiltIn().get_library_instance('SeleniumLibrary')
-        selenium2lib.execute_javascript(
-            "document.cookie = 'autologin=;path=/;domain=localhost;';"
         )
 
     def factory_boy(self, factory, **kwargs):
