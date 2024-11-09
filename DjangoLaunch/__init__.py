@@ -31,15 +31,15 @@ def safe_utf8(string):
         return string
 
 
-class DjangoLibrary:
-    """DjangoLibrary is a web testing library to test Django with Robot
+class DjangoLaunch:
+    """DjangoLaunch is a web testing library to test Django with Robot
     Framework.
 
     It uses SeleniumLibrary to run tests against a real browser instance.
 
     *Before running tests*
 
-    Prior to running test cases using DjangoLibrary, DjangoLibrary must be
+    Prior to running test cases using DjangoLaunch, DjangoLaunch must be
     imported (together with SeleniumLibrary) into your Robot test suite
     (see `importing` section), and the SeleniumLibrary 'Open Browser' keyword
     must be used to open a browser to the desired location.
@@ -73,7 +73,7 @@ class DjangoLibrary:
 
         Examples:
         | Library | SeleniumLibrary | timeout=15        | implicit_wait=0.5  | # Sets default timeout to 15 seconds and the default implicit_wait to 0.5 seconds. |  # noqa
-        | Library | DjangoLibrary    | 127.0.0.1         | 55001              | path=mysite/mysite | manage=mysite/manage.py | settings=mysite.settings | db=mysite/db.sqlite3 | # Sets default hostname to 127.0.0.1 and the default port to 55001.                |  # noqa
+        | Library | DjangoLaunch    | 127.0.0.1         | 55001              | path=mysite/mysite | manage=mysite/manage.py | settings=mysite.settings | db=mysite/db.sqlite3 | # Sets default hostname to 127.0.0.1 and the default port to 55001.                |  # noqa
         """
         self.host = host
         self.port = port
@@ -82,7 +82,7 @@ class DjangoLibrary:
         self.settings = settings
         if db:
             warn(
-                "Using the DjangoLibrary 'db' parameter is deprecated. " +
+                "Using the DjangoLaunch 'db' parameter is deprecated. " +
                 "Use the 'settings' parameter instead to set a " +
                 "database connection."
             )
@@ -122,7 +122,7 @@ class DjangoLibrary:
            instead.
         """
         warn(
-            "The DjangoLibrary 'clear_db' keyword is deprecated. " +
+            "The DjangoLaunch 'clear_db' keyword is deprecated. " +
             "Use the 'manage_flush' keyword instead."
         )
         self.manage_flush()
@@ -209,19 +209,19 @@ user.save()""".format(
     def autologin_as(self, username, password):
         """Autologin as Django user.
 
-        DjangoLibrary comes with a Django middleware component that allows the
+        DjangoLaunch comes with a Django middleware component that allows the
         autologin_as keyword to set an 'autologin' cookie that the
         middleware uses to authenticate and login the user in Django.
 
         If you want to use the autlogin_as keyword you have to add
-        'DjangoLibrary.middleware.AutologinAuthenticationMiddleware' to the
+        'DjangoLaunch.middleware.AutologinAuthenticationMiddleware' to the
         MIDDLEWARE_CLASSES right after the default AuthenticationMiddleware
         in your settings.py::
 
             MIDDLEWARE_CLASSES = (
                 ...
                 'django.contrib.auth.middleware.AuthenticationMiddleware',
-                'DjangoLibrary.middleware.AutologinAuthenticationMiddleware',
+                'DjangoLaunch.middleware.AutologinAuthenticationMiddleware',
             )
 
         *Warning*
@@ -229,7 +229,7 @@ user.save()""".format(
         Make sure that you add this middleware only to your test setup and
         NEVER to your deployment!
 
-        See https://github.com/kitconcept/robotframework-djangolibrary/blob/master/DjangoLibrary/tests/test_autologin.robot  # noqa
+        See https://github.com/kitconcept/robotframework-djangolibrary/blob/master/DjangoLaunch/tests/test_autologin.robot  # noqa
         for examples how to use the `Autologin As` keyword.
 
         """
@@ -295,7 +295,7 @@ user.save()""".format(
         together with the `pk` lookup shortcut (https://docs.djangoproject.com/en/1.9/topics/db/queries/#the-pk-lookup-shortcut)
         (e.g. "Factory Boy  bookstore.factories.BookFactory ... author__pk=1")
 
-        See https://github.com/kitconcept/robotframework-djangolibrary/blob/master/DjangoLibrary/tests/test_factory_boy.robot  # noqa
+        See https://github.com/kitconcept/robotframework-djangolibrary/blob/master/DjangoLaunch/tests/test_factory_boy.robot  # noqa
         for examples how to use the `Factory Boy` keyword.
 
         """
@@ -349,7 +349,7 @@ user.save()""".format(
         See https://docs.djangoproject.com/en/1.9/topics/db/queries/#limiting-querysets  # noqa
         for details.
 
-        See https://github.com/kitconcept/robotframework-djangolibrary/blob/master/DjangoLibrary/tests/test_query_set.robot  # noqa
+        See https://github.com/kitconcept/robotframework-djangolibrary/blob/master/DjangoLaunch/tests/test_query_set.robot  # noqa
         for examples how to use the `Query Set` keyword.
 
         """

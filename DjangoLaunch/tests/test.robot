@@ -8,7 +8,7 @@ ${BROWSER}              chrome
 
 Documentation   Django Robot Tests
 Library         SeleniumLibrary  timeout=10  implicit_wait=0.5
-Library         DjangoLibrary  127.0.0.1  55001  settings=mysite.robotframework_settings
+Library         DjangoLaunch  127.0.0.1  55001  settings=mysite.robotframework_settings
 Suite Setup     Start Django and Open Browser
 Suite Teardown  Stop Django and Close Browser
 
