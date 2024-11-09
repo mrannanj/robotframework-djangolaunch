@@ -3,11 +3,6 @@ A robot framework library for Django.
 ==============================================================================
 
 
-.. image:: https://raw.githubusercontent.com/kitconcept/robotframework-djangolibrary/master/kitconcept.png
-   :alt: kitconcept
-   :target: https://kitconcept.com/
-
-
 Introduction
 ------------
 
@@ -187,3 +182,13 @@ Run Acceptance Tests::
   $ robot DjangoLibrary/tests/
 
 .. _`Robot Framework Django Library Keyword Documentation`: https://kitconcept.github.io/robotframework-djangolibrary/
+
+
+Credits
+-------
+
+This library was developed by Timo Stollenwerk at kitconcept.
+
+.. image:: kitconcept.png
+   :alt: kitconcept
+   :target: https://kitconcept.com/
