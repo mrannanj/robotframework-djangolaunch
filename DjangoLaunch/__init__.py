@@ -22,9 +22,8 @@ class DjangoLaunch:
     # GLOBAL => Only one instance is created during the whole test execution.
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
-    def __init__(self, host="0.0.0.0", port=8000, path='mysite/mysite',
-                 manage='mysite/manage.py', settings='mysite.settings',
-                 db=None):
+    def __init__(self, host="0.0.0.0", port=8000, manage='mysite/manage.py',
+                 settings='mysite.settings'):
         """Django2Library can be imported with optional arguments.
 
         `host` is the hostname of your Django instance. Default value is
@@ -33,28 +32,17 @@ class DjangoLaunch:
         `port` is the port number of your Django instance. Default value is
         8000.
 
-        `path` is the path to your Django instance.
-
         `manage` is the path to your Django instance manage.py.
 
         `settings` is the path to your Django instance settings.py.
 
-        `db` is deprecated. Please don't use it.
-
         Examples:
-        | Library | DjangoLaunch    | 127.0.0.1         | 55001              | path=mysite/mysite | manage=mysite/manage.py | settings=mysite.settings | db=mysite/db.sqlite3 | # Sets default hostname to 127.0.0.1 and the default port to 55001.                |  # noqa
+        | Library | DjangoLaunch    | 127.0.0.1         | 55001              | manage=mysite/manage.py | settings=mysite.settings | # Sets default hostname to 127.0.0.1 and the default port to 55001.                |  # noqa
         """
         self.host = host
         self.port = port
-        self.path = os.path.realpath(path)
         self.manage = os.path.realpath(manage)
         self.settings = settings
-        if db:
-            warn(
-                "Using the DjangoLaunch 'db' parameter is deprecated. " +
-                "Use the 'settings' parameter instead to set a " +
-                "database connection."
-            )
 
     def manage_makemigrations(self):
         """Create migrations by running 'python manage.py makemigrations'."""
