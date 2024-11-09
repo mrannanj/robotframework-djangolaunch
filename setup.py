@@ -36,10 +36,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'Django',
-        'factory_boy',
-        'requests',
         'robotframework',
-        'robotframework-debuglibrary',
     ],
     entry_points="""
     # -*- Entry points: -*-
