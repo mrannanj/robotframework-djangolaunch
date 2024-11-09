@@ -8,27 +8,10 @@ import json
 import os
 import requests
 import signal
-import six
 import subprocess
 
 __version__ = '1.0'
 ROBOT_LIBRARY_DOC_FORMAT = 'reST'
-
-
-def safe_bytes(str):
-    """Returns bytes on Py3 and a string on Py2."""
-    if six.PY3:
-        return bytes(str, 'utf-8')
-    else:
-        return str
-
-
-def safe_utf8(string):
-    """Returns bytes on Py3 and an utf-8 encoded string on Py2."""
-    if six.PY2:
-        return string.encode("utf-8")
-    else:
-        return string
 
 
 class DjangoLaunch:
@@ -134,9 +117,9 @@ user = get_user_model().objects.create_user(
 user.is_superuser = '{3}'
 user.is_staff = '{4}'
 user.save()""".format(
-            safe_utf8(username),
-            safe_utf8(email),
-            safe_utf8(password),
+            username,
+            email,
+            password,
             kwargs.get('is_superuser', False),
             kwargs.get('is_staff', False),
         )
@@ -155,7 +138,7 @@ user.save()""".format(
             stderr=subprocess.PIPE
         )
 
-        django.communicate(safe_bytes(to_run))
+        django.communicate(bytes(to_run, 'utf-8'))
 
     def create_superuser(self, username, email, password):
         """Create a Django superuser in the default auth model."""
@@ -223,12 +206,9 @@ user.save()""".format(
         for examples how to use the `Autologin As` keyword.
 
         """
-        if six.PY2:
-            username = username.encode('utf-8')
-            password = password.encode('utf-8')
         # encode autologin cookie value as base64
         autologin_cookie_value = base64.b64encode(
-            safe_bytes("%s:%s" % (username, password))
+            bytes("%s:%s" % (username, password), 'utf-8')
         )
 
     def factory_boy(self, factory, **kwargs):

@@ -40,7 +40,6 @@ setup(
         'requests',
         'robotframework',
         'robotframework-debuglibrary',
-        'six',
     ],
     entry_points="""
     # -*- Entry points: -*-
