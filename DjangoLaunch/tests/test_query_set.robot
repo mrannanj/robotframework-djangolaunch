@@ -8,7 +8,7 @@ ${BROWSER}              chrome
 
 Documentation   Testing Query Keyword
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
-Library         DjangoLibrary  127.0.0.1  55001  settings=mysite.robotframework_settings
+Library         DjangoLaunch  127.0.0.1  55001  settings=mysite.robotframework_settings
 Library         Collections
 Library         DebugLibrary
 Suite Setup     Start Django and Open Browser
@@ -30,7 +30,7 @@ Stop Django and close browser
 *** Test Cases ***
 
 Test query without parameters
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory
   ${result}=  QuerySet  django.contrib.auth.models.User
   # Log List  ${result}  WARN
   ${user}=  Get From List  ${result}  0
@@ -41,7 +41,7 @@ Test query without parameters
   Dictionary should contain item  ${user}  is_staff  False
 
 Test query with single parameter
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=janedoe
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=janedoe
   ${result}=  QuerySet  django.contrib.auth.models.User  username=janedoe
   # Log List  ${result}  WARN
   ${user}=  Get From List  ${result}  0
@@ -49,7 +49,7 @@ Test query with single parameter
   Dictionary should contain item  ${user}  username  janedoe
 
 Test query with single parameter returns none
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=janedoe
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=janedoe
   ${result}=  QuerySet  django.contrib.auth.models.User  username=johndoe
   # Log List  ${result}  WARN
   Length should be  ${result}  0
@@ -63,9 +63,9 @@ Test query with Book
   Dictionary should contain item  ${book}  title  Colorless Green Ideas Sleep Furiously
 
 Test query with limit
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user1
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user2
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user3
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user1
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user2
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user3
   ${result}=  QuerySet  django.contrib.auth.models.User  limit=1
   # Log List  ${result}  WARN
   Length should be  ${result}  1
@@ -74,9 +74,9 @@ Test query with limit
   Dictionary should contain item  ${user}  username  user1
 
 Test query with offset and limit
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user1
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user2
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user3
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user1
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user2
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user3
   ${result}=  QuerySet  django.contrib.auth.models.User  offset=1  limit=2
   # Log List  ${result}  WARN
   Length should be  ${result}  1
@@ -85,11 +85,11 @@ Test query with offset and limit
   Dictionary should contain item  ${user}  username  user2
 
 Test query with offset and limit (multiple results)
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user1
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user2
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user3
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user4
-  Factory Boy  DjangoLibrary.tests.factories.UserFactory  username=user5
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user1
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user2
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user3
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user4
+  Factory Boy  DjangoLaunch.tests.factories.UserFactory  username=user5
   ${result}=  QuerySet  django.contrib.auth.models.User  offset=2  limit=4
   # Log List  ${result}  WARN
   Length should be  ${result}  2

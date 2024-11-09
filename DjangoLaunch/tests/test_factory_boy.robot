@@ -8,7 +8,7 @@ ${BROWSER}              chrome
 
 Documentation   Testing Test Isolation
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
-Library         DjangoLibrary  127.0.0.1  55001  settings=mysite.robotframework_settings
+Library         DjangoLaunch  127.0.0.1  55001  settings=mysite.robotframework_settings
 Library         Collections
 Library         DebugLibrary
 Suite Setup     Start Django and Open Browser
@@ -30,7 +30,7 @@ Stop Django and close browser
 *** Test Cases ***
 
 Factory Boy Keyword Should Return Object
-  ${user}=  Factory Boy  DjangoLibrary.tests.factories.UserFactory
+  ${user}=  Factory Boy  DjangoLaunch.tests.factories.UserFactory
   Dictionary Should Contain Key  ${user}  username
   Dictionary should contain key  ${user}  password
   Dictionary should contain item  ${user}  username  johndoe
@@ -39,19 +39,19 @@ Factory Boy Keyword Should Return Object
   Dictionary should contain item  ${user}  is_staff  False
 
 Factory Boy Keyword Should Return Primary Key Attribute
-  ${user}=  Factory Boy  DjangoLibrary.tests.factories.UserFactory
+  ${user}=  Factory Boy  DjangoLaunch.tests.factories.UserFactory
 
   Dictionary should contain key  ${user}  pk
 
 Factory Boy Keyword Should Override Attributes
-  ${user}=  Factory Boy  DjangoLibrary.tests.factories.UserFactory
+  ${user}=  Factory Boy  DjangoLaunch.tests.factories.UserFactory
   ...  username=janedoe
 
   Dictionary should contain item  ${user}  username  janedoe
   Dictionary should contain item  ${user}  email  janedoe@example.com
 
 Factory Boy Keyword Should Override Multiple Attributes
-  ${user}=  Factory Boy  DjangoLibrary.tests.factories.UserFactory
+  ${user}=  Factory Boy  DjangoLaunch.tests.factories.UserFactory
   ...  username=janedoe
   ...  email=jane@doe.com
 
@@ -143,21 +143,21 @@ Factory Boy Keyword Should Raise an Exception If Path Does Not Exist
 Factory Boy Keyword Should Raise an Exception On Broken Class
   ${expected_error}=  catenate  SEPARATOR=${SPACE}
   ...  HTTPError: FactoryBoyClass
-  ...  "DjangoLibrary.tests.factories.BrokenFactory"
+  ...  "DjangoLaunch.tests.factories.BrokenFactory"
   ...  could not be instantiated with args "{}"
-  Run Keyword and Expect Error  ${expected_error}  Factory Boy  DjangoLibrary.tests.factories.BrokenFactory
+  Run Keyword and Expect Error  ${expected_error}  Factory Boy  DjangoLaunch.tests.factories.BrokenFactory
 
 Factory Boy Keyword Should Raise an Exception On Class Without Meta Class
   ${expected_error}=  catenate  SEPARATOR=${SPACE}
   ...  HTTPError: FactoryBoyClass
-  ...  "DjangoLibrary.tests.factories.BrokenFactoryWithoutMetaClass"
+  ...  "DjangoLaunch.tests.factories.BrokenFactoryWithoutMetaClass"
   ...  could not be instantiated with args "{}"
-  Run Keyword and Expect Error  ${expected_error}  Factory Boy  DjangoLibrary.tests.factories.BrokenFactoryWithoutMetaClass
+  Run Keyword and Expect Error  ${expected_error}  Factory Boy  DjangoLaunch.tests.factories.BrokenFactoryWithoutMetaClass
 
 Factory Boy Keyword Should Raise an Exception If Class Does Not Inherit From DjangoModelFactory
   ${expected_error}=  catenate  SEPARATOR=${SPACE}
   ...  HTTPError: The FactoryBoyClass
-  ...  "DjangoLibrary.tests.factories.BrokenFactoryClassDoesNotInheritFromDjangoModelFactory"
+  ...  "DjangoLaunch.tests.factories.BrokenFactoryClassDoesNotInheritFromDjangoModelFactory"
   ...  instance does not seem to provide a _meta attribute.
   ...  Please check if the Factory Boy class inherits from DjangoModelFactory
-  Run Keyword and Expect Error  ${expected_error}  Factory Boy  DjangoLibrary.tests.factories.BrokenFactoryClassDoesNotInheritFromDjangoModelFactory
+  Run Keyword and Expect Error  ${expected_error}  Factory Boy  DjangoLaunch.tests.factories.BrokenFactoryClassDoesNotInheritFromDjangoModelFactory
