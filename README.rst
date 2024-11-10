@@ -12,6 +12,12 @@ It has been forked from
 https://github.com/kitconcept/robotframework-djangolibrary
 
 
+Documentation
+-------------
+
+Keywords are documented in `Robot Framework Django Launch Keyword Documentation`_.
+
+
 License
 -------
 
@@ -29,3 +35,5 @@ This library was developed by Timo Stollenwerk at kitconcept.
 .. image:: kitconcept.png
    :alt: kitconcept
    :target: https://kitconcept.com/
+
+.. _`Robot Framework Django Launch Keyword Documentation`: https://mrannanj.github.io/robotframework-djangolaunch/
