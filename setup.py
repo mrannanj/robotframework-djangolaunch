@@ -27,7 +27,7 @@ setup(
     keywords='robotframework django test',
     author='Martti Rannanjärvi',
     author_email='martti.rannanjarvi@iki.fi',
-    url='https://kitconcept.com',
+    url='https://github.com/mrannanj/robotframework-djangolaunch',
     license='Apache License 2.0',
     packages=find_packages(
         exclude=['ez_setup', 'examples', 'tests']
