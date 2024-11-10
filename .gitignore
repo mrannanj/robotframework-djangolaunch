@@ -11,8 +11,6 @@ log.html
 mysite/db.sqlite3
 *.egg-info
 .cache
-.py2*/
-.py3*/
 /output.xml
 /report.html
 /robotframework
