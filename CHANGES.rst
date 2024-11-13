@@ -1,3 +1,8 @@
+1.0 (2024-11-13)
+------------------
+
+- Add an example of how to use this to the README.
+
 0.9 (2024-11-11)
 ------------------
 
