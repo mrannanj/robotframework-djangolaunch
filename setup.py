@@ -20,7 +20,7 @@ setup(
         'Environment :: Web Environment',
         'Framework :: Robot Framework',
         'Framework :: Django',
-        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3',
         'Programming Language :: Python :: Implementation :: CPython',
     ],
     # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
